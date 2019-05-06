@@ -11,8 +11,8 @@ resource "helm_release" "teamcity" {
   ]
 
   name       = "unimarket-teamcity"
-  chart      = "https://github.com/dmitrii-ageev/helm-teamcity-chart/archive/0.1.0.tar.gz"
-  timeout    = 900
+  chart      = "https://github.com/dmitrii-ageev/helm-teamcity-chart/archive/0.1.1.tar.gz"
+  timeout    = 180
 
   // Configure a service account
   set {
@@ -47,13 +47,13 @@ resource "helm_release" "teamcity" {
   // Configure Ingress Annotations
   set {
     name  = "ingress.annotations.ingress\\.gcp\\.kubernetes\\.io/pre-shared-cert"
-    value = "teamcity-ssl-certificate"
+    value = "${var.dns_managed_zone != "" ? "teamcity-ssl-certificate" : "" }"
   }
 
   // Set the name of a TLS certificate to use
   set {
     name  = "ingress.annotations.ingress\\.kubernetes\\.io/ssl-cert"
-    value = "teamcity-ssl-certificate"
+    value = "${var.dns_managed_zone != "" ? "teamcity-ssl-certificate" : "" }"
   }
 
   // Set the public IP address
@@ -65,7 +65,7 @@ resource "helm_release" "teamcity" {
   // Disable HTTP access in favour of HTTPS
   set {
     name  = "ingress.annotations.kubernetes\\.io/ingress\\.allow-http"
-    value = false
+    value = "${var.dns_managed_zone != "" ? false : true }"
   }
 
   // Set the ingress class to GCE
