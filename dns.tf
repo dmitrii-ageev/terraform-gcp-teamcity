@@ -1,7 +1,7 @@
 resource "google_dns_record_set" "teamcity" {
   count = "${var.dns_managed_zone != "" ? 1 : 0}"
 
-  name = "${var.service_name}.${data.google_dns_managed_zone.teamcity.dns_name}"
+  name = "${var.service_name}.${var.dns_zone_name}"
   type = "A"
   ttl  = 60
 
