@@ -40,8 +40,10 @@ variable "ingress_host" {
 // DNS-related settings
 variable "dns_managed_zone" {
   description = "The managed DNS zone name where a record will be added"
+  default = ""
 }
 
 variable "dns_zone_name" {
   description = "The FQDN of the zone where a record will be added"
+  default = ""
 }
