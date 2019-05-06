@@ -11,10 +11,7 @@ resource "helm_release" "teamcity" {
   ]
 
   name       = "unimarket-teamcity"
-  chart      = "helm-teamcity-chart"
-  version    = "0.1.1"
-  // repository = "${helm_repository.this.metadata.0.name}"
-  repository = "https://github.com/dmitrii-ageev/helm-teamcity-chart.git"
+  chart      = "https://github.com/dmitrii-ageev/helm-teamcity-chart/archive/0.1.0.tar.gz"
   timeout    = 900
 
   // Configure a service account
