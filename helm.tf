@@ -29,7 +29,7 @@ resource "helm_release" "teamcity" {
   // Set the ingress hostname
   set {
     name  = "ingress.hosts[0]"
-    value = "${local.hostname}"
+    value = "${local.ingress_host}"
   }
 
   // TeamCity service type
