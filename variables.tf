@@ -34,7 +34,7 @@ variable "ingress_enabled" {
 
 variable "ingress_host" {
   description = "TeamCity Ingress hostname"
-  default     = "teamcity.unimarket.team"
+  default     = ""
 }
 
 // DNS-related settings
