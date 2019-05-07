@@ -11,7 +11,7 @@ resource "helm_release" "teamcity" {
   ]
 
   name       = "unimarket-teamcity"
-  chart      = "https://github.com/dmitrii-ageev/helm-teamcity-chart/archive/0.1.3.tar.gz"
+  chart      = "https://github.com/dmitrii-ageev/helm-teamcity-chart/archive/0.1.5.tar.gz"
   timeout    = 180
 
   // Configure a service account
