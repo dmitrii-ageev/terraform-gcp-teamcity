@@ -20,6 +20,11 @@ variable "service_name" {
   default     = "teamcity"
 }
 
+variable "service_type" {
+  description = "The type of the service to use"
+  default     = "NodePort"
+}
+
 // Service account name to create
 variable "teamcity_sa" {
   description = "The name of the ServiceAccount to create"
