@@ -35,7 +35,7 @@ resource "helm_release" "teamcity" {
   // TeamCity service type
   set {
     name = "service.type"
-    value = "LoadBalancer"
+    value = "ClusterIP"
   }
 
   // Enable teamcity backend
