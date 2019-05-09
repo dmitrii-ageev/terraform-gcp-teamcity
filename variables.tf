@@ -1,15 +1,5 @@
 // Kubernetes-related variables
 // Note: you must provide either cluster name + location OR cluster endpoint + CA certificate + token
-variable "gke_name" {
-  description = "Kubernetes cluster name"
-  default     = ""
-}
-
-variable "gke_location" {
-  description = "Kubernetes cluster location"
-  default     = ""
-}
-
 variable "gke_endpoint" {
   description = "Kubernetes cluster endpoint"
   default     = ""
