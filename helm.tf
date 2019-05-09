@@ -1,24 +1,11 @@
-/*
-resource "helm_repository" "this" {
-  name = "teamcity"
-  url  = "https://github.com/dmitrii-ageev/helm-teamcity-chart.git"
-}
-*/
-
 resource "helm_release" "teamcity" {
   depends_on = [
     "kubernetes_cluster_role_binding.tiller",
   ]
 
   name       = "unimarket-teamcity"
-  chart      = "https://github.com/dmitrii-ageev/helm-teamcity-chart/archive/0.1.6.tar.gz"
-  timeout    = 180
-
-  // Configure a service account
-  set {
-    name  = "serviceAccount.name"
-    value = "${var.teamcity_sa}"
-  }
+  chart      = "https://github.com/Unimarket/unimarket-helm-teamcity/archive/1.0.1.tar.gz"
+  timeout    = 300
 
   // Enable Ingress connections
   set {
@@ -36,12 +23,6 @@ resource "helm_release" "teamcity" {
   set {
     name = "service.type"
     value = "${var.service_type}"
-  }
-
-  // Enable teamcity backend
-  set {
-    name  = "ingress.defaultBackend.enabled"
-    value = "true"
   }
 
   // Configure Ingress Annotations
@@ -66,11 +47,5 @@ resource "helm_release" "teamcity" {
   set {
     name  = "ingress.annotations.kubernetes\\.io/ingress\\.allow-http"
     value = "${var.dns_managed_zone != "" ? false : true }"
-  }
-
-  // Set the ingress class to GCE
-  set {
-    name  = "ingress.annotations.kubernetes\\.io/ingress\\.class"
-    value = "gce"
   }
 }
