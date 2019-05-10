@@ -3,9 +3,9 @@ resource "helm_release" "teamcity" {
     "kubernetes_cluster_role_binding.tiller",
   ]
 
-  name       = "unimarket-teamcity"
-  chart      = "${path.module}/../../helm-charts/unimarket-helm-teamcity-1.0.1.tar.gz"
-  timeout    = 300
+  name    = "unimarket-teamcity"
+  chart   = "${path.root}/../helm-charts/unimarket-helm-teamcity-1.0.1.tar.gz"
+  timeout = 300
 
   // Enable Ingress connections
   set {
@@ -21,7 +21,7 @@ resource "helm_release" "teamcity" {
 
   // TeamCity service type
   set {
-    name = "service.type"
+    name  = "service.type"
     value = "${var.service_type}"
   }
 
@@ -48,4 +48,29 @@ resource "helm_release" "teamcity" {
     name  = "ingress.annotations.kubernetes\\.io/ingress\\.allow-http"
     value = "${var.dns_managed_zone != "" ? false : true }"
   }
+
+  // Set server's volume storage class
+  set {
+    name = "pvc.server.storageClass"
+    value = "standard"
+  }
+
+  // Set server's volume size
+  set {
+    name = "pvc.server.storageSize"
+    value = "100Gi"
+  }
+
+  // Set agent's volume storage class
+  set {
+    name = "pvc.agent.storageClass"
+    value = "standard"
+  }
+
+  // Set agent's volume size
+  set {
+    name = "pvc.agent.storageSize"
+    value = "10Gi"
+  }
+
 }
