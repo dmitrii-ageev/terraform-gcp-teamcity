@@ -4,14 +4,14 @@ provider "helm" {
   service_account = "tiller"
 
   kubernetes {
-    host                   = "${local.cluster_endpoint}"
-    token                  = "${local.cluster_token}"
-    cluster_ca_certificate = "${local.cluster_ca_certificate}"
+    token                  = "${var.gke_token}"
+    host                   = "${var.gke_endpoint}"
+    cluster_ca_certificate = "${base64decode(var.gke_ca_certificate)}"
   }
 }
 
 provider "kubernetes" {
-  host                   = "${local.cluster_endpoint}"
-  token                  = "${local.cluster_token}"
-  cluster_ca_certificate = "${local.cluster_ca_certificate}"
+  token                  = "${var.gke_token}"
+  host                   = "${var.gke_endpoint}"
+  cluster_ca_certificate = "${base64decode(var.gke_ca_certificate)}"
 }
