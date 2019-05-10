@@ -1,12 +1,11 @@
 // Kubernetes-related variables
-// Note: you must provide either cluster name + location OR cluster endpoint + CA certificate + token
-variable "gke_endpoint" {
-  description = "Kubernetes cluster endpoint"
+variable "gke_token" {
+  description = "A token for authorization on Kubernetes cluster"
   default     = ""
 }
 
-variable "gke_token" {
-  description = "Kubernetes cluster token"
+variable "gke_endpoint" {
+  description = "Kubernetes cluster endpoint"
   default     = ""
 }
 
@@ -21,6 +20,7 @@ variable "service_name" {
   default     = "teamcity"
 }
 
+// Service type
 variable "service_type" {
   description = "The type of the service to use"
   default     = "NodePort"
@@ -34,7 +34,7 @@ variable "ingress_enabled" {
 
 variable "ingress_host" {
   description = "TeamCity Ingress hostname"
-  default     = ""
+  default     = "teamcity.unimarket.team"
 }
 
 // DNS-related settings
