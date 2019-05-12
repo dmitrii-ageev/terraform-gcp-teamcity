@@ -4,7 +4,7 @@ resource "helm_release" "teamcity" {
   ]
 
   name    = "unimarket-teamcity"
-  chart   = "${path.root}/../helm-charts/unimarket-helm-teamcity-1.0.1.tar.gz"
+  chart   = "${local.helm_chart_file}"
   timeout = 300
 
   // Enable Ingress connections
