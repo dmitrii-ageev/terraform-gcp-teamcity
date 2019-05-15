@@ -44,4 +44,4 @@ Outputs
 Authors
 =======
 
-Dmitrii Ageev <dmitrii.ageev@unimarket.com>
+Dmitrii Ageev <d.ageev@gmail.com>
