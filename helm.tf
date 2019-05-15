@@ -4,7 +4,7 @@ resource "helm_release" "teamcity" {
   ]
 
   name    = "unimarket-teamcity"
-  chart   = "${local.helm_chart_file}"
+  chart   = "${local.helm_chart}"
   timeout = 300
 
   // Enable Ingress connections
@@ -46,7 +46,7 @@ resource "helm_release" "teamcity" {
   // Disable HTTP access in favour of HTTPS
   set {
     name  = "ingress.annotations.kubernetes\\.io/ingress\\.allow-http"
-    value = "${var.dns_managed_zone != "" ? false : true }"
+    value = "${var.dns_managed_zone != "" ? "false" : "true" }"
   }
 
   // Set server's volume storage class
@@ -72,5 +72,4 @@ resource "helm_release" "teamcity" {
     name = "pvc.agent.storageSize"
     value = "10Gi"
   }
-
 }
