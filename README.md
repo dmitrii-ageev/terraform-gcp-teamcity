@@ -3,6 +3,8 @@ TEAMCITY TERRAFORM MODULE
 
 A terraform module to deploy a TeamCity server and agent - a CI/CD toolkit.
 
+Note: A module a bit outdated. Will update is someday.
+
 
 Module Input Variables
 ----------------------
@@ -44,4 +46,4 @@ Outputs
 Authors
 =======
 
-Dmitrii Ageev <d.ageev@gmail.com>
+Dmitrii Ageev <dmitrii@opsworks.ru>
