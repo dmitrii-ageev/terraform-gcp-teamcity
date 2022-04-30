@@ -1,4 +1,4 @@
-TEAMCITY TERRAFORM MODULE
+TERRAFORM TEAMCITY MODULE
 =========================
 
 A terraform module to deploy a TeamCity server and agent - a CI/CD toolkit.
